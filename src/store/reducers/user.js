@@ -5,6 +5,7 @@ import {
   FETCH_USER_PROFILE_REQUEST,
   FETCH_USER_PROFILE_SUCCESS,
   FETCH_USER_PROFILE_ERROR,
+  LOGOUT_USER,
 } from 'Store/actions/user';
 
 const initialState = {
@@ -93,6 +94,11 @@ export default function userReducer(state = initialState, { type, payload }) {
           hasError: false,
         },
         profile: payload,
+      };
+
+    case LOGOUT_USER:
+      return {
+        ...initialState,
       };
 
     default:

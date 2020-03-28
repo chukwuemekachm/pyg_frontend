@@ -42,6 +42,7 @@ AuthenticationLayout.Overlay = styled.section`
   background-color: ${PRIMARY};
   background: url(${backgroundURL});
   background-size: cover;
+
   @media(max-width: 1024px) {
     display: none;
   }
@@ -54,7 +55,7 @@ AuthenticationLayout.OverlayContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
 `;
 
 AuthenticationLayout.propTypes = {

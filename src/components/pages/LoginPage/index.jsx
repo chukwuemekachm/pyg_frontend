@@ -90,7 +90,7 @@ LoginPage.Header = styled.header`
 LoginPage.FormWrapper = styled.div`
   margin: auto;
   margin-top: 2rem;
-  width: 60%;
+  width: 70%;
 
   @media(max-width: 1024px) {
     width: 80%;

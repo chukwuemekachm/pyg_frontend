@@ -22,5 +22,6 @@ module.exports = {
   externals: {
     react: 'React',
     'react-dom': 'ReactDOM',
+    'redux-saga': 'ReduxSaga',
   },
 };

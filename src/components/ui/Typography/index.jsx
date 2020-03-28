@@ -12,6 +12,10 @@ function fontSizeChooser({ type }) {
       return '2.625rem';
     case 'h2':
       return '2.2rem';
+    case 'h3':
+      return '1rem';
+    case 'tag':
+      return '0.6rem';
     case 'label':
     case 'error':
       return '1rem';
@@ -20,7 +24,9 @@ function fontSizeChooser({ type }) {
   }
 }
 
-function colorChooser({ type }) {
+function colorChooser({ type, color }) {
+  if (color) return color;
+
   switch (type) {
     case 'h1':
       return BLACK;
@@ -39,6 +45,8 @@ function marginChooser({ type }) {
       return '0 0 0.5rem 0';
     case 'error':
       return '0.5rem 0 0 0';
+    case 'tag':
+      return '0rem';
     default:
       return '0.5rem';
   }
@@ -55,9 +63,11 @@ export default function Typography(props) {
   const typographyMap = {
     h1: 'H1',
     h2: 'H2',
+    h3: 'H3',
     p: 'P',
     label: 'Label',
     error: 'Span',
+    tag: 'Span',
   };
   const StyledTypography = Typography[typographyMap[type]];
 
@@ -70,6 +80,10 @@ Typography.H1 = styled.h1`
 `;
 
 Typography.H2 = styled.h2`
+  ${typographyCSS}
+`;
+
+Typography.H3 = styled.h3`
   ${typographyCSS}
 `;
 
@@ -87,9 +101,11 @@ Typography.Span = styled.span`
 
 Typography.propTypes = {
   children: PropTypes.node.isRequired,
-  type: PropTypes.oneOf(['h1', 'h2', 'p', 'label', 'error']),
+  type: PropTypes.oneOf(['h1', 'h2', 'h3', 'p', 'label', 'error', 'tag']),
+  color: PropTypes.string,
 };
 
 Typography.defaultProps = {
   type: 'p',
+  color: '',
 };

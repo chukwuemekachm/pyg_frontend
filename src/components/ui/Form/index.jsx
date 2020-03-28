@@ -24,6 +24,10 @@ export default function Form(props) {
     setValues({ ...values, [name]: value });
   }
 
+  function handleDateChange(date) {
+    setValues({ ...values, estimatedCompletionTime: new Date(date).toISOString() });
+  }
+
   async function handleBlur({ target: { value, name } }) {
     let newErrors;
     if (value && validationSchemaKey) {
@@ -35,13 +39,19 @@ export default function Form(props) {
 
   async function handleFormSubmit(event) {
     event.preventDefault();
+    const payload = Object.entries(values).reduce((acc, [key, value]) => {
+      if (value) acc[key] = value;
+      return acc;
+    }, {});
+
     if (validationSchemaKey) {
-      const submitErrors = await validatePayload(values, validationSchemaKey);
+      const submitErrors = await validatePayload(payload, validationSchemaKey);
       if (submitErrors) {
         return setErrors(submitErrors);
       }
     }
-    return handleSubmit(values);
+
+    return handleSubmit(payload);
   }
 
   function composeProps() {
@@ -51,6 +61,7 @@ export default function Form(props) {
       handleChange,
       handleBlur,
       handleFormSubmit,
+      handleDateChange,
     };
   }
 

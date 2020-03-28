@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import {
   takeLatest, all, fork, call, put,
 } from 'redux-saga/effects';
@@ -6,6 +7,7 @@ import {
   LOGIN_USER_REQUEST,
   LOGIN_USER_SUCCESS,
   FETCH_USER_PROFILE_REQUEST,
+  LOGOUT_USER,
   loginUserSuccess,
   loginUserError,
   fetchUserProfileSuccess,
@@ -18,10 +20,10 @@ import { storageKeys } from 'Utils/constants';
 function* loginUserSaga({ payload }) {
   try {
     const { data } = yield call([api, 'post'], userRequests.IDENTITY, payload);
-    yield put(loginUserSuccess(data));
-    // eslint-disable-next-line no-underscore-dangle
     sessionStorage.setItem(storageKeys.__USER_TOKEN__, data.token);
     setAuthToken(data.token);
+
+    yield put(loginUserSuccess(data));
   } catch (error) {
     yield fork(errorHandler, loginUserError, error);
   }
@@ -45,9 +47,19 @@ export function* watchFetchUserProfileRequest() {
   yield takeLatest(LOGIN_USER_SUCCESS, fetchUserProfileSaga);
 }
 
+function* logoutUserSaga() {
+  sessionStorage.removeItem(storageKeys.__USER_TOKEN__);
+  yield;
+}
+
+export function* watchLogoutUser() {
+  yield takeLatest(LOGOUT_USER, logoutUserSaga);
+}
+
 export default function* userSaga() {
   yield all([
     fork(watchLoginUserRequest),
     fork(watchFetchUserProfileRequest),
+    fork(watchLogoutUser),
   ]);
 }

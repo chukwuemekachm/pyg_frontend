@@ -5,6 +5,7 @@ import {
   FETCH_USER_PROFILE_REQUEST,
   FETCH_USER_PROFILE_SUCCESS,
   FETCH_USER_PROFILE_ERROR,
+  LOGOUT_USER,
 } from './constants';
 
 export const loginUser = (payload) => ({
@@ -35,6 +36,10 @@ export const fetchUserProfileError = (payload) => ({
 export const fetchUserProfileSuccess = (payload) => ({
   type: FETCH_USER_PROFILE_SUCCESS,
   payload,
+});
+
+export const logoutUser = () => ({
+  type: LOGOUT_USER,
 });
 
 export * from './constants';

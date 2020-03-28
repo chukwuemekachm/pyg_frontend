@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import { DARK_GRAY, BLACK } from 'Styles/colors.styles';
 import Typography from 'Ui/Typography';
 
-export default function InputField({
-  type, label, placeHolder, value, error, name, handleChange, handleBlur,
+export default function TextField({
+  label, placeHolder, value, error, name, handleChange, handleBlur,
 }) {
   return (
-    <InputField.Wrapper>
+    <TextField.Wrapper>
       {
         label && (
           <Typography type="label" htmlFor={`${name}-field`} id={`${name}-label`}>
@@ -17,8 +17,7 @@ export default function InputField({
           </Typography>
         )
       }
-      <InputField.Input
-        type={type}
+      <TextField.Input
         placeholder={placeHolder}
         value={value}
         name={name}
@@ -36,32 +35,32 @@ export default function InputField({
           </Typography>
         ))
       }
-    </InputField.Wrapper>
+    </TextField.Wrapper>
   );
 }
 
-InputField.Wrapper = styled.div`
+TextField.Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 `;
 
-InputField.Input = styled.input`
+TextField.Input = styled.textarea`
   font-size: 1rem;
   padding: 0.8rem;
   border-radius: 0.1875rem;
   border: 1px solid ${DARK_GRAY};
   color: ${BLACK};
+  height: 8rem;
 `;
 
-InputField.defaultProps = {
+TextField.defaultProps = {
   label: '',
   placeHolder: '',
   error: [],
 };
 
-InputField.propTypes = {
-  type: PropTypes.oneOf(['text', 'email', 'password', 'number']).isRequired,
+TextField.propTypes = {
   label: PropTypes.string,
   placeHolder: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,

@@ -13,8 +13,8 @@ Spinner.Wrapper = styled.div`
   border-top: 0.1875rem solid ${PRIMARY};
   border-right: 0.1875rem solid ${PRIMARY};
   border-radius: 50%;
-  width: ${({ size }) => (size === 'small' ? '1.05rem' : '9rem')};
-  height: ${({ size }) => (size === 'small' ? '1.05rem' : '9rem')};
+  width: ${({ size }) => (size === 'small' ? '0.9rem' : '9rem')};
+  height: ${({ size }) => (size === 'small' ? '0.9rem' : '9rem')};
   animation: spin 2s linear infinite;
 
   @keyframes spin {

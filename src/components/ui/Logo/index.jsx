@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const logoURL = 'https://res.cloudinary.com/dvcaeuvee/image/upload/v1585009015/undraw_data_xmfy.svg';
 
 export default function Logo({ size }) {
-  return <Logo.Image size={size} src={logoURL} alt="New Motion Logo" />;
+  return <Logo.Image size={size} src={logoURL} alt="PYG Tracker Logo" />;
 }
 
 Logo.Image = styled.img`

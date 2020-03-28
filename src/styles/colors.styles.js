@@ -1,10 +1,15 @@
 export const PRIMARY = '#3758ff';
 export const PRIMARY_HOVER = '#0026e6';
-export const WHITE = '#FFFFFF';
+export const WHITE = '#fdffff';
 export const YELLOW_GREEN = '#7eaf39';
 export const BLUE_VIOLET = '#7028e2';
 export const MEDIUM_VIOLET_RED = '#de2786';
 export const BLACK = '#19191A';
 export const GRAY = '#4E4F51';
 export const DARK_GRAY = '#A6A7A8';
+export const LIGHT_GRAY = '#CFD1D2';
 export const CRIMSON = '#F22E46';
+export const ALICE_BLUE = '#edf1f9';
+export const ALICE_BLUE_HOVER = '#e2e5f0';
+export const SNOW = '#f9f9f9';
+export const GOLDEN_ROD = '#dfc027';
