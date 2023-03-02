@@ -11,7 +11,6 @@ import { setAuthToken } from 'Services/api';
 import { loginUserSuccess } from 'Store/actions/user';
 
 (function handleAuth() {
-  // eslint-disable-next-line no-underscore-dangle
   const token = sessionStorage.getItem(storageKeys.__USER_TOKEN__);
   if (token) {
     setAuthToken(token);

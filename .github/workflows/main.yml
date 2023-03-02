@@ -1,0 +1,28 @@
+name: Lint Code Base
+on: [push, pull_request]
+
+jobs:
+  lint_project:
+    runs-on: ubuntu-latest
+    name: A job to lint your JS projects
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install yarn -g
+      - run: yarn
+          
+      - name: Lint action step
+        id: lint
+        uses: chukwuemekachm/github-linter-bot@v2.3.8
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
